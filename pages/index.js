@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 const Home = function (props) {
   // const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log(props.data);
+  useEffect(async () => {
+    await fetch("/api/auth");
   }, []);
   return (
     <div>
