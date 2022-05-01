@@ -1,24 +1,10 @@
-import { useRouter } from "next/router";
+//Hamza Sehouli
+
 const Product = function (props) {
-  console.log(props.data);
-  return <div>product</div>;
+  return <div>{props.data.title}</div>;
 };
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      {
-        params: {
-          productid: "1",
-        },
-      },
-    ],
-    fallback: false, // false or 'blocking'
-  };
-}
-
-export async function getStaticProps(context) {
-  console.log(context);
+export async function getServerSideProps(context) {
   const param = context.params.productid;
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/todos/${param}`
@@ -32,8 +18,22 @@ export async function getStaticProps(context) {
     },
   };
 }
-// export async function getServerSideProps(context) {
-//   console.log(context);
+
+export default Product;
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       {
+//         params: {
+//           productid: "1",
+//         },
+//       },
+//     ],
+//   };
+// }
+
+// export async function getStaticProps(context) {
 //   const param = context.params.productid;
 //   const res = await fetch(
 //     `https://jsonplaceholder.typicode.com/todos/${param}`
@@ -47,4 +47,3 @@ export async function getStaticProps(context) {
 //     },
 //   };
 // }
-export default Product;

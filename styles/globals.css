@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.light {
+  background-color: aliceblue;
+}
+.light {
+  background-color: black;
+  color: white;
+}
